@@ -35,13 +35,12 @@ int main()
         cout << "\n\nYour current BMI rating is: " << bmi;
 
         cout << "\n\nEnter 'Y' or 'y' to check another BMI." << endl;
-        cout << "Enter 'N' or 'n' to exit the application." << endl;
+        cout << "Enter 'N' or 'n' to exit the programme." << endl;
         cout << "\nEnter Your Response: ";
         cin >> repeat;
         cout << endl;
 
         repeat = toupper(repeat);
-
 
         if (repeat == 'Y')
         {
