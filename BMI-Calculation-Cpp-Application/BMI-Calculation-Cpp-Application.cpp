@@ -1,15 +1,26 @@
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <Windows.h>
 using namespace std;
+
+bool repeatProgram();
+
+HANDLE consoleColor = GetStdHandle(STD_OUTPUT_HANDLE);
 
 int main()
 {
-    char repeat;
+    bool repeat;
+
+    
 
     do
     {
         float weight, height, bmi;
 
+        SetConsoleTextAttribute(consoleColor, 79);
+        cout << "\t\t\t\t------ Welcome BMI Calculator ------\n\n\n";
+        SetConsoleTextAttribute(consoleColor, 7);
         cout << "Enter the Weight(kg): ";
         cin >> weight;
         cout << "\nEnter the Height(m): ";
@@ -34,24 +45,37 @@ int main()
         }
         cout << "\n\nYour current BMI rating is: " << bmi;
 
-        cout << "\n\nEnter 'Y' or 'y' to check another BMI." << endl;
-        cout << "Enter 'N' or 'n' to exit the programme." << endl;
-        cout << "\nEnter Your Response: ";
-        cin >> repeat;
-        cout << endl;
-
-        repeat = toupper(repeat);
-
-        if (repeat == 'Y')
-        {
-            repeat = true;
-        }
-        else
-        {
-            repeat = false;
-        }
+        repeat = repeatProgram();
 
     } while (repeat);
 
     return 0;
+}
+
+bool repeatProgram()
+{
+    char repeat;
+
+    SetConsoleTextAttribute(consoleColor, 79);
+    cout << "\n\nEnter 'Y' or 'y' to check another BMI. " << endl;
+    cout << "Enter 'N' or 'n' to exit the programme." << endl;
+    SetConsoleTextAttribute(consoleColor, 7);
+    cout << "\nEnter Your Response: ";
+    cin >> repeat;
+    cout << endl;
+
+    repeat = toupper(repeat);
+
+    if (repeat == 'Y')
+    {
+        repeat = true;
+        system("cls");
+    }
+    else
+    {
+        repeat = false;
+
+    }
+
+    return repeat;
 }
